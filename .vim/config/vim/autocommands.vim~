@@ -1,0 +1,2 @@
+" My cli vim Autocommands
+autocmd BufNewFile * silent! call LoadTemplate('%:e')
