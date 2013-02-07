@@ -1,9 +1,10 @@
-" Personal Vim functions file
-" Maintainer: Malusi Gcakasi
-" Last Modified: 
+" File: ~\.vim\config\vim\functions.vim
+" Description: Functions used through out vimrc files
+" Author: Malusi Gcakasi
+" Last Modified: Feb 07, 2013 01:25 PM
 
 " Truncates tabs to first six letters of name only for easier navigation.
-function ShortTabLine()
+function! ShortTabLine()
 	let ret = ''
 	for i in range(tabpagenr('$'))
 
@@ -39,7 +40,9 @@ function ShortTabLine()
 	return ret
 endfunction
 
-" Augments autocomplete functionality on tab button.
+" Augments autocomplete functionality on tab button to allow for
+" auto completion of words based on words used as well as internal
+" dictionary
 function! SuperCleverTab()
 	" Check if at beginning of line or after a spae
 	if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
@@ -60,7 +63,26 @@ function! SuperCleverTab()
 	endif
 endfunction
 
-" Makes text folds cleaner and easier to read.
+" Loads templates for newly created files based on extension.
+" Set in autocommands file.
+function! LoadTemplate(extension)
+	silent! :execute '0r $HOME/.vim/templates/'. a:extension. '.tpl'
+	silent! execute 'source $HOME/.vim/templates/'.a:extension.'.patterns.tpl'
+endfunction
+
+" Automatically updates any "Last Modified:" in the first 20 lines of any
+" file. Set in autocommand file.
+function! LastModified()
+	if &modified
+		let save_cursor = getpos(".")
+		let n = min([20, line("$")])
+		keepjumps exe '1,' . n . 's#^\(.\{,10}Last Modified: \).*#\1' . strftime('%b %d, %Y %I:%M %p') . '#e'
+		call histdel('search', -1)
+		call setpos('.', save_cursor)
+	endif
+endfunction
+
+" Displays the number of lines inside a folded fold
 function! MyFoldFunction()
 	let line = getline(v:foldstart)
 	" Cleanup unwanted things in first line
@@ -92,28 +114,3 @@ function! NumberList() range
 		let difsize = difsize - 1
 	endwhile
 endfunction
-
-" Automatically updates any "Last Modified:" in the first 20 lines.
-" Set in autocommand file.
-function! LastModified()
-	if &modified
-		let save_cursor = getpos(".")
-		let n = min([20, line("$")])
-		keepjumps exe '1,' . n . 's#^\(.\{,10}Last Modified: \).*#\1' .\ strftime(%b %d, %Y %I:%M%p') . '#e'
-		call histdel('search', -1)
-		call setpos('.', save_cursor)
-	endif
-endfun
-
-" Loads templates for newly created files based on extension.
-" Set in autocommands file.
-function! LoadTemplate(extension)
-	silent! :execute '0r $HOME/.vim/templates/'. a:extension. '.tpl'
-	silent! execute 'source $HOME/.vim/templates/'.a:extension.'.patterns.tpl'
-endfunction
-
-" set functions
-set tabline=%!ShortTabLine()
-
-set foldtext=MyFoldFunction()
-

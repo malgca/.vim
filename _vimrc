@@ -1,6 +1,7 @@
-" Personal vimrc file
-" Maintainer: Malusi Gcakasi
-" Last Modified:
+" File: ~\_vimrc
+" Description: Personal vimrc file
+" Author: Malusi Gcakasi
+" Last Modified: Feb 07, 2013 03:34 AM
 
 " Set no compatible mode to allow greater access to ViM functions.
 set nocompatible
@@ -23,17 +24,17 @@ behave mswin
 
 " Set personal preferences (lines beyond here won't be explained unless deemed
 " necessary).
-
 set shiftwidth=4
 set tabstop=4
 
+" Set default shell to powershell
 set shell=powershell
 set shellcmdflag=-command
 
 " Set information to be displayed on status line, in my case: File Name, File
 " Type and percentage of way through the file.
 set statusline=%F%<\ %=[%l,%c]\ %=[TYPE=%Y]\ %=[%p%%]
-" Set status line to appear at bottom of screen.
+" Set status line to appear at bottom of ViM.
 set laststatus=2
 
 " Set line numbers on
@@ -58,5 +59,14 @@ set smartindent
 " Set special keywords to be automatically indented
 set cinwords="if,elseif,else,do,while,for,switch"
 
-" Sset sign to use for setting highlight stops.
+" Set sign to use for setting highlight stops.
 sign define information text=!> linehl=Warning texthl=Error
+
+" Set appearance for tabs
+set tabline=%!ShortTabLine()
+
+" Set behaviour for folded text
+set foldtext=MyFoldFunction()
+
+" Create a sign to be set on lines that I want to keep highlighted
+sign define highlightLine text=>> texthl=StatusLine

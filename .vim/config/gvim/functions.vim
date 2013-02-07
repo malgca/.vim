@@ -1,4 +1,10 @@
-" function definitions
+" File: ~\.vim\config\gvim\functions.vim
+" Description: Functions used through out gvimrc files
+" Author: Malusi Gcakasi
+" Last Modified: 
+
+" Truncates tabs to first six letters of name only for easier
+" navigation
 function ShortTabLabel()
 	let bufnrlist = tabpagebuflist(v:lnum)
 
@@ -16,6 +22,30 @@ function ShortTabLabel()
 	return ret
 endfunction
 
+" Augments autocomplete functionality on tab button to allow for
+" auto completion of words based on words used as well as internal
+" dictionary
+function! SuperCleverTab()
+	" Check if at beginning of line or after a spae
+	if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+		return "\<Tab>"
+	else
+		" Do we have an omni completion available
+		if &omnifunc != ''
+			" Use omni-completion 1. priority
+			return "\<C-X>\<C-O>"
+		elseif &dictionary != ''
+			" No omni completion, try dictionary completion
+			return "\<C-K>"
+		else
+			" Use omni completion or dictionary completion
+			" Use known-word completion
+			return "\<C-N>"
+		endif
+	endif
+endfunction
+
+" Display information information on a specific gui tab
 function! InfoGuiTooltip()
 	" get window count
 	let wincount = tabpagewinnr(tabpagenr(), '$')
@@ -29,6 +59,8 @@ function! InfoGuiTooltip()
 		return bufname($).' windows: '.wincount.' '.bufferlist.' '
 endfunction
 
+" Display's more terse information on GVim balloon folds, as well as
+" giving spelling alternatives in folds.
 function FoldSpellBalloon()
 	let foldstart = foldclosed(v:beval_lnum)
 	let foldEnd = foldclosedend(v:beval_lnum)
@@ -57,11 +89,26 @@ function FoldSpellBalloon()
 	return join(lines, has("balloon_multiline") ? "\n" : " ")
 endfunction
 
+" Loads templates for newly created files based on extension.
+" Set in autocommands file.
 function! LoadTemplate(extension)
 	silent! :execute '0r $HOME/vim/templates/'. a:extension. '.tpl'
 	silent! execute 'source $HOME/vim/templates/'.a:extension.'.patterns.tpl'
 endfunction
 
+" Automatically updates any "Last Modified:" in the first 20 lines of 
+" any file. Set in autocommands file.
+function! LastModified()
+	if &modified
+		let save_cursor = getpos(".")
+		let n = min([20, line("$")])
+		keepjumps exe '1,' . n . 's#^\(.\{,10}Last Modified: \).*#\1' . strftime('%b %d, %Y %I:%M %p') . '#e'
+		call histdel('search', -1)
+		call setpos('.', save_cursor)
+	endif
+endfunction
+
+" Displays the number of lines inside a folded fold
 function! MyFoldFunction()
 	let line = getline(v:foldstart)
 	" Cleanup unwanted things in first line
@@ -71,11 +118,13 @@ function! MyFoldFunction()
 	return v:folddashes.sub.'...'.lines.' Lines...'.getline(v:foldend)
 endfunction
 
+" Provides a crude bullet list function for gvim
 function! BulletList()
 	let lineno = line(".")
 	call setline(lineno, "<Tab>'> '" .getline(lineno))
 endfunction
 
+" Provides a crude number list function for gvim.
 function! NumberList() range
 	" Set line numbers in front of lines
 	let beginning = line("'<")
@@ -91,13 +140,3 @@ function! NumberList() range
 		let difsize = difsize - 1
 	endwhile
 endfunction
-
-" set functions
-set guitablabel=%{ShortTabLabel()}
-set guitabtooltip=%!InfoGuiTooltip()
-
-set balloonexpr=FoldSpellBalloon()
-set ballooneval
-
-set foldtext=%!MyFoldFunction()
-

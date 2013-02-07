@@ -1,5 +1,9 @@
-" key mappings:
-" maximize text area (ctrl-f2)
+" File: ~\.vim\config\gvim\mappings.vim
+" Description: GVim key and command mappings
+" Author: Malusi Gcakasi
+" Last Modified:
+
+" Maximize text area (Ctrl-f2)
 map <silent> <C-F2> :if &guioptions =~# 'T' <Bar>
 			\set guioptions-=T <Bar>
 			\set guioptions-=m <bar>
@@ -8,15 +12,22 @@ map <silent> <C-F2> :if &guioptions =~# 'T' <Bar>
 			\set guioptions+=m <Bar>
 		\endif<CR>
 
-" open new tab (ctrl-n)
+" Open new tab (ctrl-n)
 imap <silent> <C-n> <ESC>:tabnew<cr>a
-" close current tab (ctrl-w)
+
+" Close current tab (ctrl-w)
 imap <silent> <C-w> <ESC>:tabclose<cr>a
-" save current file (ctrl-s)
+
+" Save current file (ctrl-s)
 imap <silent> <C-s> <ESC>:w<cr>a
 
-" easier navigation with word wrap on.
-map <DOWN> gj
-map <UP> gk
-imap <UP> <ESC>gki
-imap <DOWN> <ESC>gji
+" Place and unplace sign with code 1 on current line
+map <F7> :exe ":sign place 1 line=" . line(".") ."name=highlightLine file=" . expand("%:p")<CR>
+map <C-F7> :sign unplace<CR>
+
+" Jump between place holders
+nnoremap <c-j> /<+.\{-1,}+><cr>c/+>/e<cr>
+inoremap <c-j> <ESC>/<+.\{-1,}+><cr>c/+>/e<cr>
+
+" Bind SuperCleverTab function to the tab key
+inoremap <S-Tab> <C-R>=SuperCleverTab()<cr>

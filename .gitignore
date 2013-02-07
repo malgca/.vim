@@ -1,0 +1,25 @@
+# Description: Special ignore for vim/root folder
+# Author: Malusi Gcakasi
+# Last Modified:
+
+# Include all files associated with vim
+!_gvimrc
+!_vimrc
+!.vim/**/*.vim
+!.vim/**/*.tpl
+!.vim/**/*.txt
+
+# Completely ignore everything else...
+# All files
+*.*
+# Except the gitignore files
+!.gitignore
+!.gitignore_global
+# All directories
+*/
+# All [g]vim backup files
+_gvimrc~
+_vimrc~
+# The viminfo file
+_viminfo
+
