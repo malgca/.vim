@@ -14,12 +14,12 @@
 *.*
 # Except the gitignore files
 !.gitignore
-!.gitignore_global
 # All directories
 */
 # All [g]vim backup files
-_gvimrc~
-_vimrc~
+*~
 # The viminfo file
 _viminfo
+# the netrc file
+_netrc
 

@@ -1,8 +1,0 @@
-# Description: Personal global git ignore...
-# Author: Malusi Gcakasi
-# Last Modified:
-
-# Ignore all swap files and backup files created using vim
-*.swp
-*.*~
-
