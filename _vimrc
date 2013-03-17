@@ -1,7 +1,7 @@
 " File: ~\_vimrc
 " Description: Personal vimrc file
 " Author: Malusi Gcakasi
-" Last Modified: Feb 07, 2013 03:34 AM
+" Last Modified: Mar 17, 2013 11:40 PM
 
 " Set no compatible mode to allow greater access to ViM functions.
 set nocompatible
