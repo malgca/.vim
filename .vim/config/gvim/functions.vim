@@ -1,7 +1,7 @@
 " File: ~\.vim\config\gvim\functions.vim
 " Description: Functions used through out gvimrc files
 " Author: Malusi Gcakasi
-" Last Modified: Mar 19, 2013 06:50 PM
+" Last Modified: Mar 22, 2013 09:47 AM
 
 " Truncates tabs to first six letters of name only for easier
 " navigation
@@ -92,7 +92,7 @@ endfunction
 " Loads templates for newly created files based on extension.
 " Set in autocommands file.
 function! LoadTemplate(extension)
-	silent! :execute '0r $home/.vim/templates/'. a:extension. '.tpl'
+	silent! :execute '0r $home/.vim/templates/'.a:extension.'.tpl'
 	silent! execute 'source $home/.vim/templates/'.a:extension.'.patterns.tpl'
 endfunction
 

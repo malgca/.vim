@@ -1,6 +1,6 @@
 " File: ~\.vim\config\gvim\mappings.vim
 " Description: GVim key and command mappings
-" Author: Malusi Gcakasi
+" Maintainer: Malusi Gcakasi
 " Last Modified:
 
 " Open new tab (ctrl-t)
@@ -9,7 +9,7 @@ imap <silent> <C-t> <ESC>:tabnew<cr>a
 " Save and close current Window
 imap <C-w> <ESC>:x<cr>a
 " Close current window without saving
-imap <C-q> <ESC>:q!<cr>a
+imap <C-q> <ESC>:q!<cr>
 
 " Save current file (ctrl-s)
 imap <C-s> <ESC>:w<cr>a
