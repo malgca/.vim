@@ -1,6 +1,6 @@
 " Description: Personal ViMRC File
 " Author: Malusi Gcakasi
-" Last Modified:
+" Last Modified: Mar 26, 2013 08:22 AM
 
 " Set no compatible mode to allow greater access to ViM functions.
 set nocompatible
