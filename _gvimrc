@@ -1,6 +1,6 @@
 " Description: Personal ViMRC File
 " Author: Malusi Gcakasi
-" Last Modified: Mar 26, 2013 08:22 AM
+" Last Modified: Mar 28, 2013 12:27 PM
 
 " Set no compatible mode to allow greater access to ViM functions.
 set nocompatible
@@ -73,5 +73,8 @@ set balloonexpr=FoldSpellBalloon()
 
 " Set behaviour for folded text
 set foldtext=%!MyFoldFunction()
+
+" Put highlight search on to use * feature
+set hlsearch
 
 sign define highlightLine text=>> texthl=StatusLine
