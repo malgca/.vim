@@ -1,11 +1,13 @@
 " Description: Personal ViMRC File
 " Author: Malusi Gcakasi
-" Last Modified: Mar 28, 2013 12:27 PM
+" Last Modified: Jul 06, 2013 11:26 PM
 
 " Set no compatible mode to allow greater access to ViM functions.
 set nocompatible
 " Set personal runtimepath
 set runtimepath=$home\.vim,$home\.vim\after,$Vim\vimfiles,$Vim\vimfiles\after,$VIMRUNTIME
+" Set backup directory for temporary files
+set backupdir=$home/.vim/backups
 
 " Set all sources from personal .vim folder
 source $home/.vim/abbreviations.vim
