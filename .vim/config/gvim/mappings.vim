@@ -34,5 +34,9 @@ map <silent> <C-F2> :if &guioptions =~# 'T' <Bar>
 map <F7> :exe ":sign place 1 line=" . line(".") ."name=highlightLine file=" . expand("%:p")<CR>
 map <C-F7> :sign unplace<CR>
 
-" Open NERDTree
-map <silent> <C-F3> <ESC>:NERDTree<cr>a
+" For local replace
+nnoremap gr gd[{V%::s/<C-R>///g<left><left><left>
+
+" For global replace
+nnoremap gR gD:%s/<C-R>///g<left><left><left>
+
