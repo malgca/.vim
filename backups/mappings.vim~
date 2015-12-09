@@ -21,15 +21,6 @@ inoremap <c-j> <ESC>/<+.\{-1,}+><cr>c/+>/e<cr>
 " Bind SuperCleverTab function to the tab key
 inoremap <S-Tab> <C-R>=SuperCleverTab()<cr>
 
-" Maximize text area (Ctrl-f2)
-map <silent> <C-F2> :if &guioptions =~# 'T' <Bar>
-			\set guioptions-=T <Bar>
-			\set guioptions-=m <bar>
-		\else <Bar>
-			\set guioptions+=T <Bar>
-			\set guioptions+=m <Bar>
-		\endif<CR>
-
 " Place and unplace sign with code 1 on current line
 map <F7> :exe ":sign place 1 line=" . line(".") ."name=highlightLine file=" . expand("%:p")<CR>
 map <C-F7> :sign unplace<CR>
@@ -40,3 +31,11 @@ nnoremap gr gd[{V%::s/<C-R>///g<left><left><left>
 " For global replace
 nnoremap gR gD:%s/<C-R>///g<left><left><left>
 
+" Maximize text area (Ctrl-f2)
+map <silent> <C-F2> :if &guioptions =~# 'T' <Bar>
+			\set guioptions-=T <Bar>
+			\set guioptions-=m <bar>
+		\else <Bar>
+			\set guioptions+=T <Bar>
+			\set guioptions+=m <Bar>
+		\endif<CR>

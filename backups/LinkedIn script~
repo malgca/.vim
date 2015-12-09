@@ -1,0 +1,91 @@
+# Author: Malusi Gcakasi
+# Version: 0.1
+# Description: This script takes care of the otherwise time consuming task of:
+# 			   1. Trawling LinkedIn according to some given criteria and company; and
+#			   2. Creating a spreadsheet that will map the information into some kind of matrix.
+#			   The hope is that, by using this script, we're able to get capability information pretty quickly from now on instead of having to worry about doing it manually.
+# Last Modified: Dec 04, 2015 11:39 AM
+
+$global:TrawlSettings = @ {}
+
+function main {
+	param (
+			
+	)
+
+	begin {
+		
+	}
+
+	process {
+	}
+
+	end {
+	}
+}
+
+function Get-People {
+	param (
+#url to linked in with the search terms (for the company and what I'm looking for)
+#search term url (healthcare, pharma, etc) - this part should just be a normal word, nothing that the user could possibly mess up
+#company search term - should literally just be a company name within quotes
+#
+	)
+
+	begin {
+#initialize the url and the search term
+	}
+
+	process {
+#open up a link to linked in
+#trawl through the pages getting the important information
+#put it all on a spreadsheet
+	}
+
+	end {
+#close the browser and anny connections
+#calll clean-html
+	}
+}
+
+function Clean-HTML {
+	param (
+#bunch of html output from searching for people
+	)
+
+	begin {
+#initialise an array or list to put things in
+#slice each record into name, position, past experience etc
+	}
+
+	process {
+#clean those records and put it in an array or a list
+	}
+
+	end {
+#call spreadsheet script
+	}
+}
+
+function Create-Spreadsheet {
+	param(
+#spreadsheet name
+#list carrying html information
+	)
+
+	begin {
+#create spreadsheet
+#create the tab and the row headings
+	}
+
+	process {
+#put the clean html into the correct rows and tab
+	}
+
+	end {
+#display the sheet
+#close all other connections
+	}
+}
+
+

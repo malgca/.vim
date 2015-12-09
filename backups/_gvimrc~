@@ -1,23 +1,26 @@
 " Description: Personal ViMRC File
 " Author: Malusi Gcakasi
-" Last Modified: Jul 06, 2013 11:26 PM
+" Last Modified: Dec 09, 2015 10:54 PM
 
 " Set no compatible mode to allow greater access to ViM functions.
 set nocompatible
+
 " Set personal runtimepath
-set runtimepath=$home\.vim,$home\.vim\after,$Vim\vimfiles,$Vim\vimfiles\after,$VIMRUNTIME
+set runtimepath=$home\.vim,$home\.vim\vimfiles,$home\.vim\vimfiles\after,$home\.vim\templates,$Vim\vimfiles,$Vim\vimfiles\after,$VIMRUNTIME
+
 " Set backup directory for temporary files
-set backupdir=$home/.vim/backups
+set backupdir=$home\.vim\backups
 
 " Set all sources from personal .vim folder
-source $home/.vim/abbreviations.vim
-source $home/.vim/config/gvim/functions.vim
-source $home/.vim/config/gvim/mappings.vim
-source $home/.vim/config/gvim/autocommands.vim
+source $home\.vim\templates\abbreviations.vim
+"source $home\.vim\config\gvim\functions.vim
+"source $home\.vim\config\gvim\mappings.vim
+"source $home\.vim\config\gvim\autocommands.vim
+"source $home\.vim\config\gvim\testFunctions.vim
 
 " Vim set runtime paths
-source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
+source $VIMRUNTIME\vimrc_example.vim
+source $VIMRUNTIME\mswin.vim
 
 " Make sure that behaviour is set to MSWindows
 behave mswin
@@ -30,6 +33,11 @@ set tabstop=4
 " Set default shell to powershell
 set shell=powershell
 set shellcmdflag=-command
+
+" Enable plugins... just in case their off...
+filetype plugin on
+filetype plugin indent on
+syntax on
 
 " Set information to be displayed on status line, in my case: 
 " File Name, File Type and percentage of way through the file.

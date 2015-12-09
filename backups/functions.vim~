@@ -1,7 +1,7 @@
 " File: ~\.vim\config\gvim\functions.vim
 " Description: Functions used through out gvimrc files
 " Author: Malusi Gcakasi
-" Last Modified: Mar 22, 2013 09:47 AM
+" Last Modified: Dec 08, 2015 12:31 PM
 
 " Truncates tabs to first six letters of name only for easier
 " navigation
@@ -139,4 +139,12 @@ function! NumberList() range
 		let ending = ending - 1
 		let difsize = difsize - 1
 	endwhile
+endfunction
+
+" Automatically maximize text area upon starting gvim.
+function! MaximizeTextArea()
+	if &guioptions =~# 'T'
+		set guioptions-=T
+		set guioptions-=m
+	endif
 endfunction
