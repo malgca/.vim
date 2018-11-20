@@ -6,17 +6,17 @@
 set nocompatible
 
 " Set personal runtimepath
-set runtimepath=$home\.vim,$home\.vim\vimfiles,$home\.vim\vimfiles\after,$home\.vim\templates,$Vim\vimfiles,$Vim\vimfiles\after,$VIMRUNTIME
+set runtimepath=_vim,_vim\vimfiles,_vim\vimfiles\after,_vim\templates,$Vim\vimfiles,$Vim\vimfiles\after,$VIMRUNTIME
 
 " Set backup directory for temporary files
-set backupdir=$home\.vim\backups
+set backupdir=_vim\backups
 
 " Set all sources from personal .vim folder
-source $home\.vim\templates\abbreviations.vim
-"source $home\.vim\config\gvim\functions.vim
-"source $home\.vim\config\gvim\mappings.vim
-"source $home\.vim\config\gvim\autocommands.vim
-"source $home\.vim\config\gvim\testFunctions.vim
+"source $home\_vim\templates\abbreviations.vim
+"source $home\_vim\config\gvim\functions.vim
+"source $home\_vim\config\gvim\mappings.vim
+"source $home\_vim\config\gvim\autocommands.vim
+"source $home\_vim\config\gvim\testFunctions.vim
 
 " Vim set runtime paths
 source $VIMRUNTIME\vimrc_example.vim
@@ -45,8 +45,8 @@ set statusline=%F%<\ %=[%l,%c]\ %=[TYPE=%Y]\ %=[%p%%]
 " Set status line to appear at bottom of ViM
 set laststatus=2
 
-" Set GUI Font to Consolas:14
-set guifont=Consolas:h14
+" Set GUI Font to Consolas:12
+set guifont=Consolas:h12
 
 " Set line numbers on
 set number
@@ -78,11 +78,6 @@ set guitabtooltip=%!InfoGuiTooltip()
 
 " Allow information to be viewed at mouse pointer
 set ballooneval
-" Set information to be displayed at mouse pointer
-set balloonexpr=FoldSpellBalloon()
-
-" Set behaviour for folded text
-set foldtext=%!MyFoldFunction()
 
 " Put highlight search on to use * feature
 set hlsearch
